@@ -11,6 +11,9 @@ builds:
       - windows
       - linux
       - darwin
+    ignore:
+      - goos: windows
+        goarch: arm64
     hooks:
       post:
         - upx "{{ .Path }}"
