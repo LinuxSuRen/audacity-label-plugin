@@ -2,20 +2,25 @@ package main
 
 import (
 	"fmt"
+	"github.com/linuxsuren/cobra-extension/version"
 	"github.com/spf13/cobra"
 	"io/ioutil"
+	"os"
 	"strconv"
 	"strings"
 )
 
 func main() {
 	cmd := cobra.Command{
-		Use: "label",
+		Use:  "label",
+		Args: cobra.ExactValidArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
 			file := args[0]
 			var data []byte
 			data, err = ioutil.ReadFile(file)
-			tokens := strings.Split(string(data), "\n")
+
+			text := strings.ReplaceAll(string(data), "\r", "\n")
+			tokens := strings.Split(text, "\n")
 			for i := range tokens {
 				token := tokens[i]
 				lineTokens := strings.SplitN(token, "\t", 3)
@@ -27,9 +32,10 @@ func main() {
 			return
 		},
 	}
+	cmd.AddCommand(version.NewVersionCmd("linuxsuren", "audacity-label-plugin", "label", nil))
 	err := cmd.Execute()
 	if err != nil {
-		panic(err)
+		os.Exit(1)
 	}
 }
 
