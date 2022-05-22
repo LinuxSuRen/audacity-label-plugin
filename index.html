@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Audacity Label Track Convert</title>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css"/>
     <script src="wasm_exec.js"></script>
 </head>
 <body>
@@ -23,9 +25,22 @@
             document.getElementById("output").innerText = result
         }
     }
+
+    function copyToClipboard() {
+        /* Get the text field */
+        var output = document.getElementById("output");
+
+        /* Copy the text inside the text field */
+        navigator.clipboard.writeText(output.innerText);
+    }
 </script>
+
+<a class="github-fork-ribbon" target="_blank"
+   href="https://github.com/linuxsuren/audacity-label-plugin"
+   data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a>
 <button type="button" onclick="doConvert()">Convert</button><br/>
 <textarea id="data" style="margin: 0px;width: 100%;height: 100px;"></textarea>
+<button onclick="copyToClipboard()">Copy</button>
 <div id="output"></div>
 </body>
 </html>
