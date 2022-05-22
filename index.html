@@ -23,9 +23,21 @@
             document.getElementById("output").innerText = result
         }
     }
+
+    function copyToClipboard() {
+        /* Get the text field */
+        var output = document.getElementById("output");
+
+        /* Copy the text inside the text field */
+        navigator.clipboard.writeText(output.innerText);
+
+        /* Alert the copied text */
+        alert("Copied");
+    }
 </script>
 <button type="button" onclick="doConvert()">Convert</button><br/>
 <textarea id="data" style="margin: 0px;width: 100%;height: 100px;"></textarea>
+<button onclick="copyToClipboard()">Copy</button>
 <div id="output"></div>
 </body>
 </html>
