@@ -17,7 +17,10 @@ How to use it?
 - Select all tracks
 - Export it from the menu `Tools` -> `Label export`
 
-## Convert more formats
+## UI
+You can convert the format via UI. Visit [here](https://linuxsuren.github.io/audacity-label-plugin/).
+
+## CLI
 The `label` command be able to convert more formats from the Audacity label text file.
 
 Let us export the label text file first:
